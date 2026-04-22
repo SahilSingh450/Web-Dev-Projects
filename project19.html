@@ -1,1 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @media(max-width:768px){
+            .navbar{
+                flex-direction: column;
+                padding:10px 2px;
+                align-items: center;
+            }
+            .menu{
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            .hero{
+                flex-direction: column;
+                text-align: center;
+                padding: 100px 20px 20px;
+            }
+            .profile-img{
+                width:250px;
+                height: 250px;
+                margin-top: 20px;
+            }
+            h1{
+                font-size: 30px;
+            }
+            .boxes{
+                flex-direction: column;
+                align-items: center;
+            }
+            .box1,.box2,.box3{
+                width:90%;
+            }
+            .Down{
+                padding:20px;
+                text-align: center;
+            }
+        }
+        body{
+            background-color:#0a0a0a;
+            color: #ffffff;
+            line-height:1.6;
+            overflow-x: hidden;
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            position:fixed;
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo{
+            color: #2ecc71;
+            font-family: 'Inter',sans-serif;
+            font-size: 30px;
+            font-weight: 1000;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+        .menu{
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .menu a{
+            color: #ffffff;
+            font-family:'Poppins',sans-serif;
+            text-decoration: none;
+            margin-right: 23px;
+            position: relative;
+            font-weight: 550;
+            transition: all 0.3s ease;
+            /*display: inline-block;*/
+        }
+        .menu a::after{
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2ecc71;
+            transition: width 0.3s ease;
+        }
+        .menu a:hover::after{
+            width:100%;
+        }
+        .hero{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 80px;
+        }
+        h1{
+            color: #2ecc71;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 45px;
+        }
+        .hero-img{
+            flex:1;
+            text-align:center;
+            position: relative;
+            
+        }
+        .profile-img{
+            width:400px;
+            height: 400px;
+            overflow: hidden;
+            border: 3px solid #2ecc71;
+            box-shadow: 10px -20px 50px rgba(46,204,113,0.9);
+            border-radius: 50%;
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+            filter:grayscale(0.2) contrast(1.1);
+        }
+        @keyframes float{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-20px);}
+        }
+        button{
+            background: rgba(46,204,113,0.9);
+            height:45px;
+            width:130px;
+            border-radius: 10px;
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            cursor: pointer;
+            border: 2px solid #0a0a0a;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button::after{
+            content: '';
+            position: absolute;
+            height:107%;
+            width:102%;
+            border-radius:10px;
+            background: #3e3e3e;
+            z-index: -1;
+        }
+        button:hover{
+            z-index: 0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46,204,113,0.9);
+        }
+        h2{
+            font-size: 30px;
+        }
+        .boxes{
+            display: flex;
+            justify-content: centre;
+            align-items: center;
+            gap: 40px;
+            padding:0 50px 20px;
+        }
+        .box1,.box2,.box3{
+            height:200px;
+            width:400px;
+            border:2px solid #333333;
+            background-color: #1a1a1a;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+        .box1:hover,.box2:hover,.box3:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46,204,113,0.9);
+        }
+        .boxes i{
+            font-size: 30px;
+            color: #2ecc71;
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        h3{
+            font-family: 'Inter',sans-serif;
+            font-size: 20px;
+            text-align: center;
+        }
+        .Down{
+            padding: 1px 300px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+        }
+        .Down i{
+            font-size: 25px;
+            color:#2ecc71;
+            padding:0 5px;
+            margin:5px;
+            cursor:pointer;
+            position:relative;
+            transition: 0.3s;
+        }
+        .Down i::after{
+            content: '';
+            position:absolute;
+            left:0;
+            bottom: 0;
+            width:0%;
+            height: 100%;
+            background: #ccc;
+            z-index: -1;
+            transition: 0.3s;
+        }
+        .Down i:hover{
+            color:#0f0f0f;
+             z-index: 0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46,204,113,0.9);
+        }
+        .Down i:hover::after{
+            width: 100%;
+        }
+        .menu a.active {
+        color: #2ecc71;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Sahil Singh</div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">Skills</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="hero">
+            <div class="Heading">
+            <h1>Frontend Developer</h1>
+            <p>I am a dedicated Frontend Developer who loves designing clean and interactive user interfaces.</p>
+            <p>I focus on creating responsive and visually appealing websites</p>
+            <button>Let's Connect</button>
+            </div>
+            <div class="hero-img">
+                <img src="c:\Users\Shilpi singh\Downloads\Sahil22.jpeg" alt="My image" class="profile-img">
+            </div>
+        </div>
+        <div class="Qualification">
+                <h2>Technical Expertise</h2>
+                <div class="boxes">
+                <div class="box1">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Frontend Development</h3>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3 (Flexbox,Grid)</li>
+                        <li>Javascript(Basics)</li>
+                    </ul>
+                </div>
+                <div class="box2">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h3>UI/UX Design</h3>
+                    <ul>
+                        <li>Responsive Design</li>
+                        <li>Clean Layouts</li>
+                        
+                    </ul>
+                </div>
+                <div class="box3">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>Github</li>
+                        <li>Vs Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <footer>
+        <div class="Down">
+            <p>© 2026 Sahil Singh.All rights reserved.</p>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-github"></i>
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </footer>
+    <script>
+  const text = "Frontend Developer";
+  let i = 0;
 
+  function typing() {
+    if (i < text.length) {
+      document.querySelector("h1").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 400);
+    }
+  }
+
+  document.querySelector("h1").innerHTML = "";
+  typing();
+  window.addEventListener("scroll", () => {
+    const nav = document.querySelector(".navbar");
+
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+    } else {
+      nav.style.boxShadow = "none";
+    }
+  });
+  document.querySelector("button").addEventListener("click", () => {
+    document.querySelector(".Down").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+
+  const links = document.querySelectorAll(".menu a");
+
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      links.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    });
+  });
+
+</script>
+</body>
+</html>
