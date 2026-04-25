@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Popup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fontawesome.com/icons/lock?f=classic&s=regular">
+    <style>
+        body{
+            color: white;
+            background: black;
+        }
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom: 1px solid #a855f7;
+        }
+        .themebtn{
+            height:40px;
+            width:40px;
+            border-radius:50%;
+        }
+        h1{
+            margin-left: -80px;
+            font-size: 30px;
+        }
+        .nav-links a{
+            text-decoration:none;
+            background-image:linear-gradient(to right,#008cff,#e100ff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            margin-right: 20px;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            position:relative;
+        }
+        .nav-links a::after{
+            content:'';
+            position:absolute;
+            bottom:-5px;
+             left:0;
+            height:2px;
+            width:0;
+            background:linear-gradient(to left,#008cff,#e100ff);
+            transition:width 0.3s ease;
+        }
+        .nav-links a:hover::after{
+            width:100%;
+        }
+        .popup{
+        }
+       h2{
+            font-size:40px;
+            margin-top:50px;
+            margin-bottom:2px;
+            background-image:linear-gradient(to left,#008cff,#e100ff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            position:relative;
+        }
+        h3{
+            font-size:38px;
+            margin-top:50px;
+            margin-top:15px;
+            background-image:linear-gradient(to left,#008cff,#e100ff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+        .content{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .lgbtn {
+            height:40px;
+            width:140px;
+            background:blue;
+            border:2px solid black;
+            font-family: Poppins, sans-serif;
+            font-size: 18px;
+            border-radius:13px;
+            align-items:center;
+            margin-top:55px;
+            position:relative;
+            color:#eaeaea;
+            cursor:pointer;
+        }
+        .lgbtn::after{
+            content:'';
+            position:absolute;
+            width:100%;
+            height:100%;
+            z-index:-1;
+            top:0;
+            left:0;
+            border-radius:13px;
+            background:linear-gradient(to bottom right,#008cff,#e100ff);
+        }
+        .lgbtn:hover{
+            z-index:0;
+            transform:translateY(-5px);
+            box-shadow: 10px 15px 15px blue;
+        }
+        .modal{
+            display:none;
+            position:fixed;
+            height:100%;
+            width:100%;
+            background:rgba(0,0,0,0.6);
+            left:0;
+            top:0;
+            justify-content:center;
+            align-items:center;
+        }
+        .model-box{
+            background:#eaeaea;
+            color:black;
+            text-align:center;
+            padding:25px;
+            border-radius:10px;
+            min-width:300px;
+            position:relative;
+        }
+        h4{
+            font-size:40px;
+            align-items:center;
+            margin-top:0px;
+        }
+        .close{
+            cursor:pointer;
+            display:flex;
+            justify-content:flex-end;
+            margin-top:0px;
+            font-size:35px;
+        }
+        .lock{
+            margin:10px auto;
+            background:#93c5fd;
+            border-radius:50%;
+            height:120px;
+            width:120px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin-bottom: 10px;
+        }
+        .lock i{
+             font-size:50px;
+             display:inline-flex;
+            justify-content:center;
+            align-items:center;
+            border-radius:50%;
+            padding:15px;
+        }
+        .input{
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+        }
+        .User, .Pass{
+            height:40px;
+            border-radius:10px;
+            border:2px solid #0a0a0a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+             <button class="themebtn" onclick="changeColour()">🌙</button>
+            <h1>Sahil Singh</h1>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="popup">
+            <h2></h2>
+            </div>
+            <div class="popup2">
+            <h3>Modal Popup</h3>
+        </div>
+        <div class="content">
+        <button class="lgbtn" onclick="openmodal()">Login</button>
+        <div id="modal" class="modal">
+            <div class="model-box">
+                <span class="close" onclick="closeModal()">×</span>
+                <div class="lock"><i class="fa-solid fa-lock"></i></div>
+                <h4>Welcome Back!</h4>
+                <div class="input">
+                <input type="text" placeholder="Username" class="User">
+                <input type="password" placeholder="Password" class="Pass">
+                </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function changeColour(){
+                if (document.body.style.backgroundColor==="black")
+                {
+                    document.body.style.backgroundColor="white";
+                    document.body.style.color="black";
+                }
+                else{
+                    document.body.style.backgroundColor="black";
+                    document.body.style.color="white";
+                }
+            }
+            function openmodal(){
+                document.getElementById("modal").style.display="flex";
+            }
+            function closeModal(){
+                document.getElementById("modal").style.display="none";
+            }
+            window.onclick=function(event){
+                let modal=document.getElementById("modal");
+                if(event.target==modal){
+                    modal.style.display="none";
+                }
+            }
+            let i=0;
+            let text="Welcome to my website!";
+            let isDeleting=false;
+            function popup(){
+                    const heading=document.querySelector(".popup h2");
+                    if (!isDeleting){
+                        heading.textContent=text.substring(0,i+1);
+                        i++;
+                    if(i===text.length){
+                        isDeleting=true;
+                        setTimeout(popup,1000);
+                        return;
+                    }
+                }
+                    else{
+                        heading.textContent=text.substring(0,i-1);
+                        i--;
+                        if(i===1){
+                            isDeleting=false;
+                        }
+                    }
+                    setTimeout(popup,isDeleting?500:500);
+                }
+            window.onload = function(){
+    popup();
+}
+        </script>
+    </header>
+</body>
+</html>
