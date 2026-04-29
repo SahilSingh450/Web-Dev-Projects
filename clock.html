@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body{
+            backdrop-filter: blur(50px);
+             background:linear-gradient(to right,#008cff,#e100ff) ;
+        }
+        #clock-container{
+            position: relative;
+            margin:auto;
+            height:40vw;
+            width:40vw;
+            /*border:2px solid black;*/
+            background:url("data:image/jpeg;base64,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") no-repeat;
+            background-size:100%;
+            margin-top: 50px;
+            border-radius: 50%;
+            overflow: hidden; 
+        }
+        #hour,#minute,#second{
+            position:absolute;
+            border-radius:10px;
+            background:rgba(0,0,0,0.9);
+            transform-origin: bottom;
+        }
+        #hour{
+    height: 29%;
+    width: 1.2%;
+    top: 21%;
+    left: 49.2%;
+    opacity: 0.8;
+}
+#minute{
+    height: 35%;
+    width: 1.2%;
+    top: 15%;
+    left: 49.2%;
+    opacity: 0.8;
+}
+#second{
+    height: 38%;
+    width: 1.2%;
+    top: 12%;
+    left: 49.2%;
+    opacity: 0.8;
+}
+    </style>
+</head>
+<body>
+    <div id="clock-container">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        setInterval(()=>{
+            d = new Date();
+            htime=d.getHours();
+            mtime=d.getMinutes();
+            stime=d.getSeconds();
+            hrotation=30*htime+mtime/2;
+            mrotation=6*mtime;
+            srotation=6*stime;
+            hour.style.transform=`rotate(${hrotation}deg)`;
+            minute.style.transform=`rotate(${mrotation}deg)`;
+            second.style.transform=`rotate(${srotation}deg)`;
+        },1000)
+    </script>
+</body>
+</html>
