@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ collapse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        @media(max-width:768px){
+            .container:nth-child(4),
+            .container:nth-child(5){
+                display: none;
+            }
+        }
+        body{
+            background-image: url(https://t3.ftcdn.net/jpg/03/74/60/52/360_F_374605226_3zlXWUfx8NGav7j0JEXESiKaYqM7HagA.jpg);
+            no-repeat center center/cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            justify-content: center;
+        }
+        .box{
+            border: 2px solid transparent;
+           /* max-width: 900px;*/
+            border-radius: 25px;
+            padding:20px;
+           /* border-color: linear-gradient(to right,#7C57B4,#3E2777);*/
+            height: 500px;
+            width: 800px;
+            padding: 6px;
+            background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),linear-gradient(45deg,#ff00cc,#3333ff);
+            backdrop-filter: blur(10px);
+            background-origin: border-box;
+            background-clip: content-box,border-box;
+            box-shadow: 0 0 10px #ff00cc,
+            0 0 20px #ff00cc,
+            0 0 40px #ff00cc;
+            background:rgba(0,0,0,0.99);
+        }
+        h1{
+            font-family: Poppins,sans-serif;
+            font-size: 30px;
+            color: whitesmoke;
+            display: flex;
+            justify-content: center;
+        }
+        .faq-item{
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius:20px;
+            transition: 0.3s;
+        }
+        .question{
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            font-size: 18px;
+        }
+        .answer{
+            padding: 15px;
+            color:#808080;
+            background: rgba(255,255,255,0.1);
+            display: none;
+        }
+        .faq-item.active .answer{
+            display:block;
+        }
+        .question span{
+            font-size: 20px;
+            font-weight: bold;
+            transition:0.3s;
+            color:white;
+            height:30px;
+            width:30px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .faq-item.active span{
+            transform: rotate(45deg);
+        }
+        .question:hover{
+            background: #1d4ed8;
+            color: white;
+            box-shadow: 0 0 10px #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="Ques">
+            <h1>Frequently Asked Questions</h1>
+        </div>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="question">
+                    What is FAQ collapse?
+                    <span>+</span>
+                </div>
+                <div class="answer">
+                    FAQ collapse is an UI feature in which we can show/hide answers on clicking
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    How does this feature work?
+                    <span>+</span>
+                </div>
+                <div class="answer">
+                    It works by taking toggle through Javascript
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    Is the feature FAQ collapse accessible?
+                    <span>+</span>
+                </div>
+                <div class="answer">
+                    Yes,faq collapse is accessible if designed properly.It allows all users,including those using keyboards or screen readers,to open and read the answers easily.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    Can I customise the FAQ collapse?
+                    <span>+</span>
+                </div>
+                <div class="answer">
+                    Yes you can custimise FAQ collapse by changing styles,colours,animations, and layout using CSS and Javascripts according to your design needs.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const items = document.querySelectorAll(".faq-item");
+
+items.forEach(item => {
+  item.querySelector(".question").addEventListener("click", () => {
+
+    // close all first
+    items.forEach(i => i.classList.remove("active"));
+
+    // open clicked
+    item.classList.add("active");
+
+  });
+});
+    </script>
+</body>
+</html>
